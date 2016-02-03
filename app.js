@@ -17,16 +17,21 @@ $('.letters').click(function(event) {
   $('#slot1').prepend(this);
   slot.push($(this).attr('id'));
   wordSubmitted = slot.join('');
-  console.log(wordSubmitted);
-
 })
+$('#submit').click(function() {
+  if (wordSubmitted === "cream") {
+    alert('WInner WINNER!');
+  }
+});
+
 
 function isThreeLetters() {
-  for (var i = 0; i < slot.length; i++) {
-    if (slot.join('') === threeLetters[i]) {
+  for (var i = 0; i < threeLetters.length; i++) {
+    if (wordSubmitted === threeLetters[i]) {
       return threeLetters[i];
+      console.log(threeLetters[i]);
     }
   }
 }
-console.log($('#a').attr('class'));
+// console.log($('#a').attr('class'));
 // isThreeLetters();

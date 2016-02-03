@@ -1,5 +1,5 @@
 .gameBoard {
-  width: 150px;
+  width: 600px;
   height: 150px;
   border: 1px solid black;
   display: inline-block;

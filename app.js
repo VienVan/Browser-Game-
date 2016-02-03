@@ -12,10 +12,8 @@ var answers = $('#answer').val();
 //   }
 // }
 
-$('#a').click(function() {
-  $('#slot1').append(this);
+$('.letters').click(function(event) {
+  $('#slot1').prepend(this);
 })
-$('#e').click(function() {
-    $('#slot2').append(this);
-  })
-  // isThreeLetters();
+
+// isThreeLetters();

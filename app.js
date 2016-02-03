@@ -3,14 +3,8 @@ var word = 'cream';
 var threeLetters = ['ace', 'car', 'are', 'era', 'arc', 'ear'];
 var slot = [];
 var wordSubmitted;
-//
-// function isThreeLetters() {
-//   for (var i = 0; i < threeLetters.length; i++) {
-//     if (answers === threeletters[i]) {
-//       $('#answers').append('<p>' + threeLetters[i] + '</p>');
-//     }
-//   }
-// }
+var score = 0;
+
 
 
 $('.letters').click(function(event) {
@@ -18,20 +12,32 @@ $('.letters').click(function(event) {
   slot.push($(this).attr('id'));
   wordSubmitted = slot.join('');
 })
+
 $('#submit').click(function() {
-  if (wordSubmitted === "cream") {
-    alert('WInner WINNER!');
+  if (wordSubmitted === word) {
+    alert('Winner Winner!');
+  }
+  getScore();
+  console.log(score);
+});
+
+$('#shuffle').click(function() {
+  var parent = $("#letterBoard");
+  var divs = parent.children();
+  while (divs.length) {
+    parent.append(divs.splice(Math.floor(Math.random() * divs.length), 1)[
+      0]);
   }
 });
 
-
-function isThreeLetters() {
-  for (var i = 0; i < threeLetters.length; i++) {
-    if (wordSubmitted === threeLetters[i]) {
-      return threeLetters[i];
-      console.log(threeLetters[i]);
-    }
+function getScore() {
+  if (wordSubmitted.length === 3) {
+    score += 300;
+  } else if (wordSubmitted.length === 4) {
+    score += 400;
+  } else if (wordSubmitted.length === 5) {
+    score += 500;
+  } else {
+    alert('Only words with three or more letters are allowed!');
   }
 }
-// console.log($('#a').attr('class'));
-// isThreeLetters();

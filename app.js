@@ -1,16 +1,20 @@
 console.log('linked');
-var word = 'cream';
-var threeLetters = ['ace', 'car', 'are', 'era', 'arc', 'ear']; //test
 var slot = [];
+var letters =[];
+var word = 'cream';
 var wordSubmitted;
 var score = 0;
 var cream =
-  'https://littlefilmlab.com/development/vientwist/wordlist.php?letters=bliss';
+  'https://littlefilmlab.com/development/vientwist/wordlist.php?letters=cream';
+var x;
+var globalData;
+
 
 
 //adds letter to board slot, push letter into an array, then join the letters to string
 $('.letters').click(function(event) {
   $('#slot1').append(this);
+  letters.push($(this));
   slot.push($(this).attr('id'));
   joinWords();
   adjustButton();
@@ -29,7 +33,9 @@ $('#submit').click(function() {
 $('#shuffle').click(shuffle);
 
 $('#clear').click(function() {
+
   $('#slot1').empty();
+  $('#letterBoard').append(letters);
   wordSubmitted='';
 })
 
@@ -67,12 +73,15 @@ function shuffle() {
   };
 }
 $.get(cream, function(data) {
-  var letters = data.letters.split('');
-
+    var letters = data.letters.split('');
   $('.letters').each(function(index) {
     $(this).attr('id', letters[index]);
     $(this).html(letters[index]);
   })
+  var wordList = data.word_list;
+  globalData = data.word_list;
+
+  // console.log(wordList);
 
   // while(letters.length > 0) {
   //   var i = Math.floor(Math.random() letters.length);
@@ -84,3 +93,5 @@ $.get(cream, function(data) {
   //   // console.log($('.letters'));
   // }
 });
+
+console.log(globalData);

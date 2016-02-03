@@ -29,7 +29,8 @@ $('#submit').click(function() {
 $('#shuffle').click(shuffle);
 
 $('#clear').click(function() {
-  $('#slot1').replaceWith('#slot1');
+  $('#slot1').empty();
+  wordSubmitted='';
 })
 
 //get the score of each word submitted,

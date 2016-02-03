@@ -9,7 +9,8 @@ a {
 #slot1 {
   width: 575px;
   height: 130px;
-  border: 8px solid white;
+  border: 3px solid white;
+  border-radius: 5px;
   /*display: inline-block;*/
   vertical-align: top;
   position: relative;

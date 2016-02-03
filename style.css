@@ -1,28 +1,43 @@
-.gameBoard {
-  width: 505px;
-  height: 102px;
-  border: 1px solid black;
-  display: inline-block;
-  vertical-align: top;
+body {
+  background: linear-gradient(rgba(150,150,150, .4), rgba(150, 150, 150, .4)), url('./spirit.png');
+  background-size: cover;
+  color: white;
 }
+a {
+  color: white;
+}
+#slot1 {
+  width: 575px;
+  height: 130px;
+  border: 8px solid white;
+  /*display: inline-block;*/
+  vertical-align: top;
+  position: relative;
+  margin: auto;
+}
+
 
 .letters {
   width: 100px;
   height: 100px;
-  border: 1px solid red;
+  border: 3px solid white;
   border-radius: 100%;
   display: inline-block;
   text-align: center;
   font-size: 50px;
   padding-top: 10px;
-  float: right;
-  clear: left;
+  margin: 5px;
+  /*float: right;
+  clear: left;*/
 }
 #right-wrapper {
-  float: right;
-}
-/*#e {
   position: relative;
-  top: 50%;
-  transform: translateY(-50%);
+  width: 100%;
+  text-align: center;
+  margin: auto;
+  /*float: right;*/
+}
+/*.buttons {
+  background: red;
+  position: absolute;
 }*/

@@ -10,6 +10,7 @@
          <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
          <link href='./style.css' rel='stylesheet'>
 
+
          <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
          <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
          <!--[if lt IE 9]>
@@ -19,24 +20,27 @@
        </head>
        <body>
         <h1 class="text-center">Text Twister</h1>
+
         <div id='right-wrapper'>
+
                   <div id='board'>
+                      <div><p id='score'></p></div>
                       <div id='slot1' class='gameBoard'></div>
-                      <!-- <div id='slot2' class='gameBoard'></div>
-                      <div id='slot3' class='gameBoard'></div>
-                      <div id='slot4' class='gameBoard'></div>
-                      <div id='slot5' class='gameBoard'></div> -->
                   </div>
 
                   <div id='letterBoard'>
-                      <a href="#"><div id='a' class='letters'>a</div></a>
-                      <a href="#"><div id='e' class='letters'>e</div></a>
-                      <a href="#"><div id='c' class='letters'>c</div></a>
-                      <a href="#"><div id='r' class='letters'>r</div></a>
-                      <a href="#"><div id='m' class='letters'>m</div></a>
+                      <a href="#"><div class='letters'></div></a>
+                      <a href="#"><div class='letters'></div></a>
+                      <a href="#"><div class='letters'></div></a>
+                      <a href="#"><div class='letters'></div></a>
+                      <a href="#"><div class='letters'></div></a>
                   </div>
-                  <button id='submit'>Enter</button>
-                  <button id='shuffle'>Shuffle</button>
+
+                  <div class='buttons'>
+                      <button class='btn btn-default' id='submit'>Enter</button>
+                      <button class='btn btn-default' id='shuffle'>Shuffle</button>
+                  </div>
+
         </div>
 
         <div id='left-wrapper'>
@@ -48,9 +52,8 @@
 
         <!-- jQuery -->
         <script src="https://code.jquery.com/jquery.min.js"></script>
-        <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
         <!-- Bootstrap JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+        <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script> -->
   <!-- Your own javascript -->
   <script src="app.js"></script>
        </body>

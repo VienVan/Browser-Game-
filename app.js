@@ -14,6 +14,8 @@ var answers = $('#answer').val();
 
 $('.letters').click(function(event) {
   $('#slot1').prepend(this);
+  slot.push($(this).attr('id'));
+  console.log(slot);
 })
-
+console.log($('#a').attr('class'));
 // isThreeLetters();

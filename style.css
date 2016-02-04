@@ -38,6 +38,9 @@ a {
   margin: auto;
   /*float: right;*/
 }
+.btn {
+  margin-top: 30px;
+}
 /*.buttons {
   background: red;
   position: absolute;

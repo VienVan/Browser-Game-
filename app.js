@@ -10,34 +10,31 @@ var x;
 var globalData;
 
 
-
 //adds letter to board slot, push letter into an array, then join the letters to string
-$('.letters').click(function(event) {
-  $('#slot1').append(this);
-  letters.push($(this));
-  slot.push($(this).attr('id'));
-  joinWords();
-  adjustButton();
-})
 
-
-//testing to see if wordSubmitted is a word (in this case the correct 5 letter word)
-$('#submit').click(function() {
-  if (wordSubmitted === word) {
-    alert('Winner Winner!');
-  }
-  getScore();
-});
-
+function selectLetter(){
+  $('.letters').click(function(event) {
+    $('#slot1').append(this);
+    letters.push(this);
+    slot.push($(this).html());
+    joinWords();
+    adjustButton();
+  })
+};
+selectLetter();
 //twist function, to shuffle the letter in place
 $('#shuffle').click(shuffle);
 
 $('#clear').click(function() {
-
   $('#slot1').empty();
+  console.log($('#slot1').val());
   $('#letterBoard').append(letters);
-  wordSubmitted='';
-})
+  wordSubmitted = '';
+  slot = [];
+  selectLetter();
+});
+
+
 
 //get the score of each word submitted,
 //**note** haven't gotten reset to work yet so can't add more than one score
@@ -63,6 +60,7 @@ function adjustButton() {
 function joinWords() {
   return wordSubmitted = slot.join('');
 }
+// console.log($.inArray(wordSubmitted, ['are','care']));
 
 function shuffle() {
   var parent = $("#letterBoard");
@@ -74,24 +72,22 @@ function shuffle() {
 }
 $.get(cream, function(data) {
     var letters = data.letters.split('');
+    var wordList = data.word_list;
   $('.letters').each(function(index) {
     $(this).attr('id', letters[index]);
     $(this).html(letters[index]);
-  })
-  var wordList = data.word_list;
-  globalData = data.word_list;
+  });
 
-  // console.log(wordList);
+  $('#submit').click(function() {
+    if (wordSubmitted === word) {
+      alert('Winner Winner!');
+    }
+    if($.inArray(wordSubmitted, wordList) !== -1) {
+            getScore();
+    } else if($.inArray(wordSubmitted, wordList) === -1) {
+      alert('NOT A WORD');
+    }
 
-  // while(letters.length > 0) {
-  //   var i = Math.floor(Math.random() letters.length);
-  //
-  // }
-  // for (var i = 0; i < letters.length; i++) {
-  //   $('.letters').html(letters[i]);
-  //   // $('.letters').attr('id', i);
-  //   // console.log($('.letters'));
-  // }
+  });
+
 });
-
-console.log(globalData);

@@ -24,9 +24,9 @@ $.get(cream, function(data) {
   });
 
   $('#submit').click(function() {
-    // if (wordSubmitted == word) {
-    //   alert('Winner Winner!');
-    // }
+  
+    $.playSound('clickSound');
+
     if($.inArray(wordSubmitted, wordList) !== -1) {
       if(wordSubmitted.length === 5) {
         alert('Congratulations! You can move on to the next round.');
@@ -55,6 +55,8 @@ function selectLetter(){
     // console.log("letters are:", letters[0]);
     joinWords();
     adjustButton();
+    $.playSound('clickSound');
+
   });
 };
 selectLetter();
@@ -78,6 +80,8 @@ $('#clear').click(function() {
       $(FOO[i]).off('click');
     }
   selectLetter();
+  $.playSound('clickSound');
+
   // $('.letters').on('click', function() {
   //   $('#slot1').append(this);
   // });
@@ -98,6 +102,7 @@ function getScore() {
     alert('Only words with three or more letters are allowed!');
   }
   $('#score').html(score);
+  sessionStorage.setItem('Score', score);
 }
 
 
@@ -129,10 +134,23 @@ function shuffle() {
     parent.append(divs.splice(Math.floor(Math.random() * divs.length), 1)[
       0]);
   };
+  $.playSound('clickSound');
+
 }
 
 
 
+$.extend({
+    playSound: function(){
+      return $(
+        '<audio autoplay="autoplay" style="display:none;">'
+          + '<source src="' + arguments[0] + '.mp3" />'
+          + '<source src="' + arguments[0] + '.ogg" />'
+          + '<embed src="' + arguments[0] + '.mp3" hidden="true" autostart="true" loop="false" class="playSound" />'
+        + '</audio>'
+      ).appendTo('body');
+    }
+  });
 // function haveSubmitted() {
 //   if($.inArray(wordSubmitted, answeredWords) !== -1) {
 //     alert('You have already entered this word!');

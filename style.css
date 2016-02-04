@@ -2,6 +2,7 @@ body {
   background: linear-gradient(rgba(150,150,150, .4), rgba(150, 150, 150, .4)), url('./spirit.png');
   background-size: cover;
   color: white;
+  font-family: Nunito;
 }
 a {
   color: white;
@@ -10,7 +11,7 @@ a {
   width: 575px;
   height: 130px;
   border: 3px solid white;
-  border-radius: 5px;
+  border-radius: 10px;
   /*display: inline-block;*/
   vertical-align: top;
   position: relative;
@@ -48,15 +49,21 @@ p {
   height: 30px;
   margin-top: 30px;
   text-align: center;
-  border: 2px solid white;
+  border: 1px solid white;
   font-size: 20px;
   display: inline-block;
+  border-radius: 5px;
 }
 #score {
   font-size: 50px;
 }
 #answers {
   padding: 20px;
+}
+#empty {
+  width: 100px;
+  height: 100px;
+  /*display: none;*/
 }
 .letters {
   /*margin-top: 30px;*/

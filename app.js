@@ -7,7 +7,7 @@ var wordSubmitted;
 var score = 0;
 var cream =
   'https://littlefilmlab.com/development/vientwist/wordlist.php?letters=';
-
+var message = 'Try to get as many words as you can!'
 // var slot2 = [];
 
 
@@ -26,17 +26,17 @@ $.get(cream, function(data) {
   $('#submit').click(function() {
 
     $.playSound('clickSound');
+    $('#alertMessage').html('');
 
     if($.inArray(wordSubmitted, wordList) !== -1) {
-      if(wordSubmitted.length === 5) {
-        $('#alertMessage').html('Congratulations! You can move on to the next round.');
-      }
+        if(wordSubmitted.length === 5) {
+          $('#alertMessage').html('Congratulations! You can move on to the next round.');
+        }
             getScore();
             $('#answers').append('<p>' + wordSubmitted + '</p>')
             submitWords();
             console.log(answeredWords);
             // haveSubmitted();
-            $('#alertMessage').html('');
 
     } else if($.inArray(wordSubmitted, wordList) === -1) {
       $('#alertMessage').html('NOT A WORD');

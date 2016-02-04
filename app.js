@@ -7,12 +7,12 @@ var wordSubmitted;
 var score = 0;
 var cream =
   'https://littlefilmlab.com/development/vientwist/wordlist.php?letters=';
-var message = 'Try to get as many words as you can!'
+var message = 'Good Job Trick!'
 // var slot2 = [];
 
 
-//adds letter to board slot, push letter into an array, then join the letters to string
-//
+
+
 
 $.get(cream, function(data) {
     globalData = data;
@@ -26,7 +26,7 @@ $.get(cream, function(data) {
   $('#submit').click(function() {
 
     $.playSound('clickSound');
-    $('#alertMessage').html('');
+    $('#alertMessage').html(message);
 
     if($.inArray(wordSubmitted, wordList) !== -1) {
         if(wordSubmitted.length === 5) {
@@ -35,8 +35,6 @@ $.get(cream, function(data) {
             getScore();
             $('#answers').append('<p>' + wordSubmitted + '</p>')
             submitWords();
-            console.log(answeredWords);
-            // haveSubmitted();
 
     } else if($.inArray(wordSubmitted, wordList) === -1) {
       $('#alertMessage').html('NOT A WORD');
@@ -77,7 +75,7 @@ $('#clear').click(function() {
   wordSubmitted = '';
   var FOO = $('.letters');
     for (var i = 0; i < FOO.length; i++) {
-      console.log(FOO[i])
+      // console.log(FOO[i])
       $(FOO[i]).off('click');
     }
   selectLetter();
@@ -136,6 +134,7 @@ function shuffle() {
       0]);
   };
   $.playSound('clickSound');
+  $('#letterBoard').mixItUp();
 
 }
 
@@ -152,6 +151,17 @@ $.extend({
       ).appendTo('body');
     }
   });
+
+
+$('body').keypress(function(args) {
+    if (args.keyCode == 13) {
+        $("#submit").click();
+        return false;
+    } else if (args.keyCode == 32) {
+      $('#shuffle').click();
+
+    }
+});
 // function haveSubmitted() {
 //   if($.inArray(wordSubmitted, answeredWords) !== -1) {
 //     alert('You have already entered this word!');

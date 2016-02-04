@@ -24,21 +24,22 @@ $.get(cream, function(data) {
   });
 
   $('#submit').click(function() {
-  
+
     $.playSound('clickSound');
 
     if($.inArray(wordSubmitted, wordList) !== -1) {
       if(wordSubmitted.length === 5) {
-        alert('Congratulations! You can move on to the next round.');
+        $('#alertMessage').html('Congratulations! You can move on to the next round.');
       }
             getScore();
             $('#answers').append('<p>' + wordSubmitted + '</p>')
             submitWords();
             console.log(answeredWords);
             // haveSubmitted();
+            $('#alertMessage').html('');
 
     } else if($.inArray(wordSubmitted, wordList) === -1) {
-      alert('NOT A WORD');
+      $('#alertMessage').html('NOT A WORD');
     }
 
   });
@@ -99,7 +100,7 @@ function getScore() {
   } else if (wordSubmitted.length === 5) {
     score += 500;
   } else {
-    alert('Only words with three or more letters are allowed!');
+    $('#alertMessage').html('Only words with three or more letters are allowed!');
   }
   $('#score').html(score);
   sessionStorage.setItem('Score', score);

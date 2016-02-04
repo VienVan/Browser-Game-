@@ -1,24 +1,53 @@
 console.log('linked');
 var slot = [];
 var letters = [];
+var answeredWords = [];
 var word = 'cream';
 var wordSubmitted;
 var score = 0;
 var cream =
   'https://littlefilmlab.com/development/vientwist/wordlist.php?letters=cream';
-var x;
-var globalData;
+
 // var slot2 = [];
 
 
 //adds letter to board slot, push letter into an array, then join the letters to string
 //
+
+$.get(cream, function(data) {
+    globalData = data;
+    var letters = data.letters.split('');
+    var wordList = data.word_list;
+  $('.letters').each(function(index) {
+    $(this).attr('id', letters[index]);
+    $(this).html(letters[index]);
+  });
+
+  $('#submit').click(function() {
+    if (wordSubmitted == word) {
+      alert('Winner Winner!');
+    }
+    if($.inArray(wordSubmitted, wordList) !== -1) {
+            getScore();
+            $('#answers').append('<p>' + wordSubmitted + '</p>')
+            submitWords();
+            console.log(answeredWords);
+            // haveSubmitted();
+
+    } else if($.inArray(wordSubmitted, wordList) === -1) {
+      alert('NOT A WORD');
+    }
+
+  });
+
+});
+
 function selectLetter(){
   $('.letters').click(function() {
     $('#slot1').append($(this));
     slot.push($(this).text());
     letters.push(this);
-    console.log("this is:", this);
+    // console.log("this is:", this);
     // console.log("slot contains:", slot);
     // console.log("letters are:", letters[0]);
     joinWords();
@@ -35,7 +64,7 @@ $('#clear').click(function() {
   letters.forEach(function(element) {
     $('#letterBoard').append(element);
   })
-  console.log(letters);
+  // console.log(letters);
    // append each DOM element in the array
   slot = [];
   letters = [];
@@ -69,13 +98,19 @@ function getScore() {
 }
 
 
+function addWordToPage() {
 
+}
 function adjustButton() {
   return $('.btn').css('margin-top', '20px');
 }
 // function pushToArray(a) {
 //   slot.push($(a).html())
 // }
+
+function submitWords() {
+  answeredWords.push(wordSubmitted);
+}
 
 function joinWords() {
   // localStorage.setItem('wordSubmitted', slot.join(''));
@@ -93,28 +128,13 @@ function shuffle() {
   };
 }
 
-$.get(cream, function(data) {
-    globalData = data;
-    var letters = data.letters.split('');
-    var wordList = data.word_list;
-  $('.letters').each(function(index) {
-    $(this).attr('id', letters[index]);
-    $(this).html(letters[index]);
-  });
 
-  $('#submit').click(function() {
-    if (wordSubmitted == word) {
-      alert('Winner Winner!');
-    }
-    if($.inArray(wordSubmitted, wordList) !== -1) {
-            getScore();
-    } else if($.inArray(wordSubmitted, wordList) === -1) {
-      alert('NOT A WORD');
-    }
 
-  });
-
-});
+// function haveSubmitted() {
+//   if($.inArray(wordSubmitted, answeredWords) !== -1) {
+//     alert('You have already entered this word!');
+//   }
+// }
 
 //
 // $(document).ready(function() {

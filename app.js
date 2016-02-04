@@ -1,6 +1,6 @@
 console.log('linked');
 var slot = [];
-var letters =[];
+var letters = [];
 var word = 'cream';
 var wordSubmitted;
 var score = 0;
@@ -8,30 +8,47 @@ var cream =
   'https://littlefilmlab.com/development/vientwist/wordlist.php?letters=cream';
 var x;
 var globalData;
+// var slot2 = [];
 
 
 //adds letter to board slot, push letter into an array, then join the letters to string
-
+//
 function selectLetter(){
-  $('.letters').click(function(event) {
-    $('#slot1').append(this);
+  $('.letters').click(function() {
+    $('#slot1').append($(this));
+    slot.push($(this).text());
     letters.push(this);
-    slot.push($(this).html());
+    console.log("this is:", this);
+    // console.log("slot contains:", slot);
+    // console.log("letters are:", letters[0]);
     joinWords();
     adjustButton();
-  })
+  });
 };
 selectLetter();
+
 //twist function, to shuffle the letter in place
 $('#shuffle').click(shuffle);
 
 $('#clear').click(function() {
   $('#slot1').empty();
-  console.log($('#slot1').val());
-  $('#letterBoard').append(letters);
-  wordSubmitted = '';
+  letters.forEach(function(element) {
+    $('#letterBoard').append(element);
+  })
+  console.log(letters);
+   // append each DOM element in the array
   slot = [];
+  letters = [];
+  wordSubmitted = '';
+  var FOO = $('.letters');
+    for (var i = 0; i < FOO.length; i++) {
+      console.log(FOO[i])
+      $(FOO[i]).off('click');
+    }
   selectLetter();
+  // $('.letters').on('click', function() {
+  //   $('#slot1').append(this);
+  // });
 });
 
 
@@ -56,11 +73,16 @@ function getScore() {
 function adjustButton() {
   return $('.btn').css('margin-top', '20px');
 }
+// function pushToArray(a) {
+//   slot.push($(a).html())
+// }
 
 function joinWords() {
+  // localStorage.setItem('wordSubmitted', slot.join(''));
   return wordSubmitted = slot.join('');
+  // return wordSubmitted = localStorage['wordSubmitted'];
 }
-// console.log($.inArray(wordSubmitted, ['are','care']));
+
 
 function shuffle() {
   var parent = $("#letterBoard");
@@ -70,7 +92,9 @@ function shuffle() {
       0]);
   };
 }
+
 $.get(cream, function(data) {
+    globalData = data;
     var letters = data.letters.split('');
     var wordList = data.word_list;
   $('.letters').each(function(index) {
@@ -79,7 +103,7 @@ $.get(cream, function(data) {
   });
 
   $('#submit').click(function() {
-    if (wordSubmitted === word) {
+    if (wordSubmitted == word) {
       alert('Winner Winner!');
     }
     if($.inArray(wordSubmitted, wordList) !== -1) {
@@ -91,3 +115,18 @@ $.get(cream, function(data) {
   });
 
 });
+
+//
+// $(document).ready(function() {
+//   bindEvents();
+//   startGame();
+// })
+//
+// bindEvents() {
+//   listenerA()
+//   listenerB()
+// }
+//
+// startGame() {
+//
+// }

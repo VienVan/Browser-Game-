@@ -15,6 +15,8 @@ a {
   vertical-align: top;
   position: relative;
   margin: auto;
+  margin-bottom: 20px;
+  padding-top: 5px;
 }
 
 
@@ -44,10 +46,20 @@ a {
 p {
   width: 75px;
   height: 30px;
+  margin-top: 30px;
   text-align: center;
   border: 2px solid white;
   font-size: 20px;
   display: inline-block;
+}
+#score {
+  font-size: 50px;
+}
+#answers {
+  padding: 20px;
+}
+.letters {
+  /*margin-top: 30px;*/
 }
 /*.buttons {
   background: red;

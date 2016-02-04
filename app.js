@@ -6,7 +6,7 @@ var word = 'cream';
 var wordSubmitted;
 var score = 0;
 var cream =
-  'https://littlefilmlab.com/development/vientwist/wordlist.php?letters=cream';
+  'https://littlefilmlab.com/development/vientwist/wordlist.php?letters=';
 
 // var slot2 = [];
 
@@ -24,10 +24,13 @@ $.get(cream, function(data) {
   });
 
   $('#submit').click(function() {
-    if (wordSubmitted == word) {
-      alert('Winner Winner!');
-    }
+    // if (wordSubmitted == word) {
+    //   alert('Winner Winner!');
+    // }
     if($.inArray(wordSubmitted, wordList) !== -1) {
+      if(wordSubmitted.length === 5) {
+        alert('Congratulations! You can move on to the next round.');
+      }
             getScore();
             $('#answers').append('<p>' + wordSubmitted + '</p>')
             submitWords();

@@ -1,11 +1,20 @@
 body {
-  background: linear-gradient(rgba(150,150,150, .4), rgba(150, 150, 150, .4)), url('./spirit.png');
+  background:  url('./spirit.png');
   /*background: linear-gradient(rgba(246, 173, 255, 1), rgba(246, 173, 255, .5));*/
   background-size: cover;
+  background-position: 550px 0px;
+  background-repeat: repeat-x;
   color: white;
   font-family: Nunito;
   height: 600px;
+  animation: animatedBackground 9s linear;
+  animation-direction: reverse;
 }
+ @keyframes animatedBackground {
+	from { background-position: 10px 0px; }
+	to { background-position: 10% 0; }
+}
+
 a {
   color: white;
 }
@@ -69,13 +78,34 @@ p {
   /*padding: 20px;*/
   margin: 20px;
   position: fixed;
-  bottom: 20px;
+  bottom: 35px;
 
   /*border: 1px solid red;*/
 }
 
-#empty {
+/*#empty {
   width: 100px;
   height: 100px;
   /*display: none;*/
+}*/
+
+@media (max-width: 600px) {
+  body {
+    background: gray;
+  }
+  #slot1 {
+    width: 400px;
+    height: 75px;
+  }
+  .letters {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+  }
+  p {
+    width: 50px;
+    height: 30px;
+    font-size: 20px;
+
+  }
 }

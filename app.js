@@ -6,12 +6,12 @@ var wordSubmitted;
 var score = 0;
 var url =
   'https://littlefilmlab.com/development/vientwist/wordlist.php?letters=';
-var message = 'Good Job Trick!'
+var message = 'Good Job!'
 // var slot2 = [];
 var submittedCheck = 0;
 var wordList;
 var keyStroke =[];
-
+var wordsLeft = 0;
 
 
 callData();
@@ -27,15 +27,17 @@ function callData() {
       $(this).attr('id', letters[index]);
       $(this).html(letters[index]);
     });
+    wordsLeft = wordList.length;
+
 
     letters.forEach(function(val) {
       keyStroke.push(val.charCodeAt(0));
       // console.log(keyStroke);
     })
-
+allWordsAnswered();
     $('#submit').click(function() {
       // clearWhenSubmitted();
-          allWordsAnswered();
+
           isSubmitted();
           $.playSound('clickSound');
 
@@ -72,9 +74,12 @@ function allWordsAnswered() {
     alert('won!');
   }
 }
+// allWordsAnswered();
 function selectLetter(){
     $('.letters').click(function() {
-          $('#slot1').append($(this));
+          // $('#slot1').append($(this));
+          $(this).clone().appendTo($('#slot1'));
+          $(this).css('color', 'black');
           slot.push($(this).text());
           letters.push(this);
           joinWords();
@@ -83,6 +88,7 @@ function selectLetter(){
 
         });
 };
+
 
 $('#shuffle').click(shuffle);
 
@@ -101,10 +107,23 @@ $('body').keydown(function(args) {
         $('.letters').click();
       }
     });
+// function nextLevel() {
+//   $.get(url, function(data) {
+//
+//       var letters = data.letters.split('');
+//       wordList = data.word_list;
+//     $('.letters').each(function(index) {
+//       $(this).attr('id', letters[index]);
+//       $(this).html(letters[index]);
+//     });
+// }
 $('#nextLevel').click(function() {
-  location.reload();
-  score = localStorage.Score;
-  console.log(score);
+  // location.reload();
+  nextLevel();
+  $('#answers').empty();
+
+  // score = localStorage.Score;
+  // console.log(score);
 })
 function clear() {
 
@@ -113,6 +132,7 @@ $('#clear').click(function() {
       letters.forEach(function(element) {
         $('#letterBoard').append(element);
       })
+      $('.letters').css('color', 'white');
       slot = [];
       letters = [];
       wordSubmitted = '';
@@ -129,6 +149,7 @@ clear();
 
 
 function getScore() {
+  // var score = Number(localStorage.score);
   if (wordSubmitted.length === 3) {
     score += 300;
   } else if (wordSubmitted.length === 4) {
@@ -150,6 +171,12 @@ function adjustButton() {
 function submitWords() {
     answeredWords.push(wordSubmitted);
     sessionStorage['answers'] = answeredWords;
+    wordsLeft--;
+    $('#wordTotal').html("There are " + wordsLeft +" words left!");
+    if(wordsLeft===0) {
+      alert("You've got all of the words! You're a word Guru!");
+      score += 1000;
+    }
 }
 
 function isSubmitted() {

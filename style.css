@@ -69,10 +69,11 @@ p {
   /*padding: 20px;*/
   margin: 20px;
   position: fixed;
-  bottom: 45px;
+  bottom: 20px;
 
   /*border: 1px solid red;*/
 }
+
 #empty {
   width: 100px;
   height: 100px;

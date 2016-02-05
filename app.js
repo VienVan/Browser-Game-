@@ -10,6 +10,7 @@ var message = 'Good Job Trick!'
 // var slot2 = [];
 var submittedCheck = 0;
 var wordList;
+var keyStroke =[];
 
 
 
@@ -22,13 +23,18 @@ function callData() {
 
       var letters = data.letters.split('');
       wordList = data.word_list;
-
     $('.letters').each(function(index) {
       $(this).attr('id', letters[index]);
       $(this).html(letters[index]);
     });
 
+    letters.forEach(function(val) {
+      keyStroke.push(val.charCodeAt(0));
+      // console.log(keyStroke);
+    })
+
     $('#submit').click(function() {
+      // clearWhenSubmitted();
           allWordsAnswered();
           isSubmitted();
           $.playSound('clickSound');
@@ -58,7 +64,9 @@ function callData() {
   });
 
 }
-
+function clearWhenSubmitted() {
+  setTimeOut(clear, 1000);
+};
 function allWordsAnswered() {
   if(wordList.length === answeredWords.length) {
     alert('won!');
@@ -76,10 +84,9 @@ function selectLetter(){
         });
 };
 
+$('#shuffle').click(shuffle);
 
-    $('#shuffle').click(shuffle);
-
-    $('body').keypress(function(args) {
+$('body').keypress(function(args) {
         if (args.which === 13) {
             $("#submit").click();
         } else if (args.which === 32) {
@@ -87,14 +94,19 @@ function selectLetter(){
         }
     });
 
-    $('body').keydown(function(args) {
+$('body').keydown(function(args) {
       if (args.which === 8) {
         $('#clear').click();
       } else if (args.which === 79) {
-        alert("o");
+        $('.letters').click();
       }
     });
-
+$('#nextLevel').click(function() {
+  location.reload();
+  score = localStorage.Score;
+  console.log(score);
+})
+function clear() {
 
 $('#clear').click(function() {
       $('#slot1').empty();
@@ -112,6 +124,8 @@ $('#clear').click(function() {
       $.playSound('clickSound');
 
 });
+}
+clear();
 
 
 function getScore() {
@@ -125,7 +139,7 @@ function getScore() {
     $('#alertMessage').html('Only words with three or more letters are allowed!');
   }
   $('#score').html(score);
-  sessionStorage.setItem('Score', score);
+  localStorage.setItem('Score', score);
 }
 
 

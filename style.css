@@ -47,30 +47,34 @@ a {
   margin-top: 30px;
 }
 p {
-  width: 75px;
-  height: 30px;
+  width: 100px;
+  height: 50px;
   margin-top: 30px;
+  margin-left: 10px;
   text-align: center;
-  border: 1px solid white;
-  font-size: 20px;
+  border: 2px solid white;
+  font-size: 30px;
   display: inline-block;
   border-radius: 5px;
+  padding-bottom: 2px;
 }
 #score {
   font-size: 30px;
 }
+#left-wrapper {
+  position: relative;
+  margin: auto;
+}
 #answers {
-  padding: 20px;
+  /*padding: 20px;*/
+  margin: 20px;
+  position: fixed;
+  bottom: 45px;
+
+  /*border: 1px solid red;*/
 }
 #empty {
   width: 100px;
   height: 100px;
   /*display: none;*/
 }
-.letters {
-  /*margin-top: 30px;*/
-}
-/*.buttons {
-  background: red;
-  position: absolute;
-}*/

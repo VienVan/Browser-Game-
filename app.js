@@ -9,6 +9,7 @@ var url =
 var message = 'Good Job Trick!'
 // var slot2 = [];
 var submittedCheck = 0;
+var wordList;
 
 
 
@@ -20,7 +21,7 @@ function callData() {
   $.get(url, function(data) {
 
       var letters = data.letters.split('');
-      var wordList = data.word_list;
+      wordList = data.word_list;
 
     $('.letters').each(function(index) {
       $(this).attr('id', letters[index]);
@@ -28,6 +29,7 @@ function callData() {
     });
 
     $('#submit').click(function() {
+          allWordsAnswered();
           isSubmitted();
           $.playSound('clickSound');
 
@@ -47,16 +49,21 @@ function callData() {
                           $('#alertMessage').html('NOT A WORD');
                         }
 
-          } else {
-              submittedCheck = 0;
-            }
-
+                    }
     });
-
+        // if(wordList.length === answeredWords.length) {
+        //   $('#alertMessage').html('Congratulations! You have found every single word!')
+        //   score += 1000;
+        // }
   });
+
 }
 
-
+function allWordsAnswered() {
+  if(wordList.length === answeredWords.length) {
+    alert('won!');
+  }
+}
 function selectLetter(){
     $('.letters').click(function() {
           $('#slot1').append($(this));

@@ -171,7 +171,8 @@ function submitWords() {
     answeredWords.push(wordSubmitted);
     sessionStorage['answers'] = answeredWords;
     wordsLeft--;
-    $('#wordTotal').html("There are " + wordsLeft +" words left!");
+    $('#totalCount').html(wordsLeft+ ' ');
+
     if(wordsLeft===0) {
       alert("You've got all of the words! You're a word Guru!");
       score += 1000;

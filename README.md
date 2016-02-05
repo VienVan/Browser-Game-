@@ -1,5 +1,6 @@
 <<<<<<< HEAD
-# Text Twister
+# [Text Twister](http://curator-chipmunk-51555.bitballoon.com/)
+
 Based on the popular game from GameHouse **Text Twist**
 
 ## Technology:
@@ -9,7 +10,7 @@ Based on the popular game from GameHouse **Text Twist**
 4. Functional Programming
 5. Words API
 
-## Instructions for Text Twist:
+## Instructions for Text Twister:
 
 1. Letters are generated randomly.
 2. Click on the letters to form a word.
@@ -50,5 +51,4 @@ Based on the popular game from GameHouse **Text Twist**
 3. **delete** for the button "Clear Slot"
 
 ##Contributions
-*I am still working on utilizing the keyboard for this game. If anyone is able to contribute to this feature, please submit a pull request. Thank you.* 
->>>>>>> nextLevelButton
+*I am still working on utilizing the keyboard for this game. If anyone is able to contribute to this feature, please submit a pull request. Thank you.*

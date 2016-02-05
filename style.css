@@ -1,8 +1,10 @@
 body {
   background: linear-gradient(rgba(150,150,150, .4), rgba(150, 150, 150, .4)), url('./spirit.png');
+  /*background: linear-gradient(rgba(246, 173, 255, 1), rgba(246, 173, 255, .5));*/
   background-size: cover;
   color: white;
   font-family: Nunito;
+  height: 600px;
 }
 a {
   color: white;

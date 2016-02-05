@@ -17,11 +17,13 @@ Based on the popular game from GameHouse **Text Twist**
 3. Words have to be three letters or more.
 4. Player may play until there are no more words available.
 5. If player guesses a five letter word, player may continue to the next level at any time.
+6. You can use the keyboard to type in the letters.
 
 ## Keyboard Shortcut
 1. **Return** for the button "Submit"
 2. **Space** for the button "Shuffle"
 3. **delete** for the button "Clear Slot"
 
-##Contributions
-*I am still working on utilizing the keyboard for this game. If anyone is able to contribute to this feature, please submit a pull request. Thank you.*
+
+##Bug
+*As of right now, if there are repeated letters in the letter tray, you can only use the keyboard for one of those letters. Player must click the other letter for it to work. If anyone can fix this bug, please create a Pull Request. Thank you!!* 

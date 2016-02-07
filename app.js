@@ -59,6 +59,8 @@ function callData() {
                         }
 
                     }
+                      helpClear();
+
     });
         // if(wordList.length === answeredWords.length) {
         //   $('#alertMessage').html('Congratulations! You have found every single word!')

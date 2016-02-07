@@ -13,6 +13,9 @@ var wordList;
 var keyStroke =[];
 var wordsLeft = 0;
 
+var total = Number(localStorage.getItem('Score'));
+
+// $("#score").append(localStorage.getItem('Score'));
 
 callData();
 selectLetter();
@@ -82,17 +85,31 @@ $('body').keydown(function(args) {
 });
 
 $('#nextLevel').click(function() {
-  location.reload();
+
+  // location.reload();
+  helpClear();
   nextLevel();
+
   $('#answers').empty();
+  $('#nextLevel').addClass('hide');
+
 
   // score = localStorage.Score;
   // console.log(score);
 })
 
 function nextLevel() {
+
       callData();
+
 }
+
+
+//adding new game button
+// function newGame() {
+//       $('#new').click(function() {
+        
+//       }
 
 
 function clear() {
@@ -116,7 +133,27 @@ function clear() {
       });
   }
 
-
+//helpClear()
+//takes out the click portion of the clear function to allow 
+//info to be cleared out without having to use the 
+//location.reload function
+function helpClear(){
+  $('#slot1').empty();
+            letters.forEach(function(element) {
+              $('#letterBoard').append(element);
+            })
+            $('.letters').css('color', 'white');
+            slot = [];
+            letters = [];
+            wordSubmitted = '';
+            var FOO = $('.letters');
+              for (var i = 0; i < FOO.length; i++) {
+                  $(FOO[i]).off('click');
+              }
+            selectLetter();
+            $.playSound('clickSound');
+            $('#clear').toggleClass('highlight');
+}
 
 function getScore() {
         // var score = Number(localStorage.score);
@@ -129,9 +166,27 @@ function getScore() {
         } else {
           $('#alertMessage').html('Only words with three or more letters are allowed!');
         }
+        firstLocal();
+        // $('#score').html(score);
+        // localStorage.setItem('Score', score);
+      }
+
+
+//thought I may need two have 2 local storages to have two keys
+// even though I know there is probably a better way to do this
+//this may not be needed with the helpClear() 
+function firstLocal (){
+
         $('#score').html(score);
         localStorage.setItem('Score', score);
-      }
+}
+
+// function secondLocal (){
+
+//         $('.score').html(score);
+//         localStorage.setItem('newScore', score);
+// }
+
 
 
 function adjustButton() {

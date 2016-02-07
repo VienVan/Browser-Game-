@@ -104,6 +104,8 @@ $('#nextLevel').click(function() {
 function nextLevel() {
 
       callData();
+      $.playSound('clickSound');
+
 
 }
 
@@ -156,7 +158,7 @@ function helpClear(){
                   $(FOO[i]).off('click');
               }
             selectLetter();
-            $.playSound('clickSound');
+            // $.playSound('clickSound');
             $('#clear').toggleClass('highlight');
 }
 

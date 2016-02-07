@@ -20,6 +20,7 @@ var total = Number(localStorage.getItem('Score'));
 callData();
 selectLetter();
 clear();
+newGame();
 
 
 function callData() {
@@ -106,10 +107,12 @@ function nextLevel() {
 
 
 //adding new game button
-// function newGame() {
-//       $('#new').click(function() {
-        
-//       }
+function newGame() {
+      $('#new').click(function() {
+          location.reload();
+
+      })
+    }
 
 
 function clear() {

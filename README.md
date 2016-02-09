@@ -1,6 +1,7 @@
 
 # [Text Twister](http://curator-chipmunk-51555.bitballoon.com/)
 
+
 Based on the popular game from GameHouse **Text Twist**
 
 ## Technology:
@@ -26,4 +27,7 @@ Based on the popular game from GameHouse **Text Twist**
 
 
 ##Bug
-*As of right now, if there are repeated letters in the letter tray, you can only use the keyboard for one of those letters. Player must click the other letter for it to work. If anyone can fix this bug, please create a Pull Request. Thank you!!* 
+*As of right now, if there are repeated letters in the letter tray, you can only use the keyboard for one of those letters. Player must click the other letter for it to work. If anyone can fix this bug, please create a Pull Request. Thank you!!*
+
+#Planning
+[Trello Board](https://trello.com/b/c4Fs4kcN/project-one-browser-game)

@@ -135,14 +135,14 @@ function clear() {
               }
             selectLetter();
             $.playSound('clickSound');
-            $('#clear').toggleClass('highlight');
+            // $('#clear').toggleClass('highlight');
 
       });
   }
 
 //helpClear()
-//takes out the click portion of the clear function to allow 
-//info to be cleared out without having to use the 
+//takes out the click portion of the clear function to allow
+//info to be cleared out without having to use the
 //location.reload function
 function helpClear(){
   $('#slot1').empty();
@@ -159,7 +159,7 @@ function helpClear(){
               }
             selectLetter();
             // $.playSound('clickSound');
-            $('#clear').toggleClass('highlight');
+            // $('#clear').toggleClass('highlight');
 }
 
 function getScore() {
@@ -181,7 +181,7 @@ function getScore() {
 
 //thought I may need two have 2 local storages to have two keys
 // even though I know there is probably a better way to do this
-//this may not be needed with the helpClear() 
+//this may not be needed with the helpClear()
 function firstLocal (){
 
         $('#score').html(score);
@@ -210,7 +210,7 @@ function submitWords() {
             alert("You've got all of the words! You're a word Guru!");
             score += 1000;
         }
-        $('#clear').toggleClass('highlight');
+        // $('#clear').toggleClass('highlight');
     }
 
 function isSubmitted() {
